@@ -49,6 +49,8 @@ jobs:
             #### Terraform Initialization ⚙️\`${{ steps.init.outcome }}\`
             #### Terraform Validation 🤖\`${{ steps.validate.outputs.stdout }}\`
             #### Terraform Plan 📖\`${{ steps.plan.outcome }}\`
+            #### github.ref 📖\`${{ github.ref }}\`
+            #### github.event_name 📖\`${{ github.event_name }}\`
 
             <details><summary>Show Plan</summary>
 
@@ -72,5 +74,5 @@ jobs:
         run: exit 1
 
       - name: Terraform Apply
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        #if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: terraform apply -auto-approve
